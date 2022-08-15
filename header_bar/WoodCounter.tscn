@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://header_bar/RessourceCounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ressources_icons/wood-pile.png" type="Texture" id=2]
+
+[node name="WoodCounter" instance=ExtResource( 1 )]
+startQuantity = 321
+
+[node name="TextureRect" parent="." index="0"]
+texture = ExtResource( 2 )

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/Commodities/CommodityCounter.gd" type="Script" id=1]
+[ext_resource path="res://ui/Commodities/Commodity.gd" type="Script" id=2]
+[ext_resource path="res://chancery_theme.tres" type="Theme" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[node name="CommodityCounter" type="HBoxContainer"]
+margin_right = 82.0
+margin_bottom = 24.0
+size_flags_vertical = 4
+script = ExtResource( 1 )
+
+[node name="CommodityIcon" type="TextureRect" parent="."]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 2 )
+
+[node name="CommodityBox" type="ColorRect" parent="."]
+margin_left = 28.0
+margin_right = 82.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 54, 24 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = SubResource( 1 )
+color = Color( 0.266667, 0.266667, 0.266667, 1 )
+
+[node name="CommodityLabel" type="Label" parent="CommodityBox"]
+margin_right = 49.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = ExtResource( 3 )
+text = "999000"
+align = 2
+valign = 1
