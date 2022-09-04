@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/TurnCounter.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui_icons/backward-time.png" type="Texture" id=2]
-[ext_resource path="res://chancery_theme.tres" type="Theme" id=3]
+[ext_resource path="res://helvecities-v0-theme.tres" type="Theme" id=3]
 
 [node name="TurnCounter" type="HBoxContainer"]
 margin_right = 59.0

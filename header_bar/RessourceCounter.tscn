@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://header_bar/RessourceCounter.gd" type="Script" id=1]
-[ext_resource path="res://chancery_theme.tres" type="Theme" id=2]
+[ext_resource path="res://helvecities-v0-theme.tres" type="Theme" id=2]
 
 [sub_resource type="StreamTexture" id=2]
 flags = 4
@@ -13,6 +13,7 @@ load_path = "res://.import/grain-bundle.png-d051feab9b9a12651f39d45819e71c45.ste
 margin_right = 82.0
 margin_bottom = 24.0
 size_flags_vertical = 4
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -38,8 +39,6 @@ margin_right = 49.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
-theme = ExtResource( 2 )
 text = "999000"
 align = 2
 valign = 1
-percent_visible = -0.166667

@@ -21,14 +21,14 @@ margin_bottom = 1073.0
 size_flags_vertical = 3
 
 [node name="MenuButton" type="Button" parent="VBoxContainer"]
+visible = false
 margin_right = 466.0
 margin_bottom = 43.0
 text = "Menu"
 
 [node name="StepInfo" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 47.0
 margin_right = 466.0
-margin_bottom = 84.0
+margin_bottom = 37.0
 
 [node name="Label" type="Label" parent="VBoxContainer/StepInfo"]
 margin_right = 439.0
@@ -43,14 +43,20 @@ margin_bottom = 37.0
 text = "Xe"
 
 [node name="GeneralInfo" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 88.0
+margin_top = 41.0
 margin_right = 466.0
 margin_bottom = 968.0
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GeneralInfo"]
+[node name="Label3" type="Label" parent="VBoxContainer/GeneralInfo"]
 margin_right = 466.0
-margin_bottom = 300.0
+margin_bottom = 37.0
+text = "Demo of the interactive area for building"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/GeneralInfo"]
+margin_top = 41.0
+margin_right = 466.0
+margin_bottom = 341.0
 rect_min_size = Vector2( 0, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -59,9 +65,9 @@ expand = true
 stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GeneralInfo"]
-margin_top = 304.0
+margin_top = 345.0
 margin_right = 466.0
-margin_bottom = 347.0
+margin_bottom = 388.0
 
 [node name="Label" type="Label" parent="VBoxContainer/GeneralInfo/HBoxContainer"]
 margin_top = 3.0
@@ -76,17 +82,30 @@ margin_bottom = 43.0
 text = "?"
 
 [node name="Label" type="Label" parent="VBoxContainer/GeneralInfo"]
-margin_top = 351.0
+margin_top = 392.0
 margin_right = 466.0
-margin_bottom = 428.0
-text = "Meunier
+margin_bottom = 469.0
+text = "Meunier :        200 ‰
 "
 
 [node name="Label2" type="Label" parent="VBoxContainer/GeneralInfo"]
-margin_top = 432.0
+margin_top = 473.0
 margin_right = 466.0
-margin_bottom = 469.0
+margin_bottom = 510.0
 text = "Production"
+
+[node name="Label5" type="Label" parent="VBoxContainer/GeneralInfo"]
+margin_top = 514.0
+margin_right = 466.0
+margin_bottom = 591.0
+text = "Wheat : 78%
+Bark : 22%"
+
+[node name="Label4" type="Label" parent="VBoxContainer/GeneralInfo"]
+margin_top = 595.0
+margin_right = 466.0
+margin_bottom = 632.0
+text = "Available in a next version..."
 
 [node name="CommoditiesInfo" type="GridContainer" parent="VBoxContainer"]
 margin_top = 972.0

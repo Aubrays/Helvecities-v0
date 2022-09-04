@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/Commodities/CommodityCounter.gd" type="Script" id=1]
 [ext_resource path="res://ui/Commodities/Commodity.gd" type="Script" id=2]
-[ext_resource path="res://chancery_theme.tres" type="Theme" id=3]
+[ext_resource path="res://helvecities-v0-theme.tres" type="Theme" id=3]
 
 [sub_resource type="Theme" id=1]
 
