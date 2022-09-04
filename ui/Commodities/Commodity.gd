@@ -3,31 +3,39 @@ extends Node
 # A commodity is a in-game resource to collect, like wood or wheat.
 # The name commodity was choosen because resource is a reserved name in GDScript.
 
-
-#const commodities = [
-#	{
-#		"name": "wheat",
-#		"icon": "res://assets/ressources_icons/oat.svg"
-#	},
-#	{
-#		"name": "wood",
-#		"icon": "res://assets/ressources_icons/wood-pile.svg"
-#	},
-#	{
-#		"name": "pork",
-#		"icon": "res://assets/ressources_icons/pig.svg"
-#	},
-#
-#]
-
-var type_name: String
+var commodity_name: String
 var icon_texture: Texture
+var ingredients: Array = []
 var stock: int
 var evolution_per_turn: int
 
 
-func _init(type_name, icon_texture, initial_stock, initial_evolution_per_turn = 0):
-	self.type_name = type_name
-	self.icon_texture = icon_texture
+func _init(commodity_name, initial_stock, initial_evolution_per_turn = 0):
+	var commodity: Dictionary
+	for item in Global.existing_commodities:
+		if item.name == commodity_name:
+			commodity = item
+
+	self.commodity_name = commodity.name
+	self.icon_texture = load(commodity.icon)
 	self.stock = initial_stock
 	self.evolution_per_turn = initial_evolution_per_turn
+
+func add_ingredients():
+	var commodity: Dictionary
+	for item in Global.existing_commodities:
+		if item.name == commodity_name:
+			commodity = item
+	
+	for ingredient in commodity.ingredients:
+		for instancied_commodity in Global.commodities:
+			if instancied_commodity.commodity_name == ingredient.name:
+				self.ingredients.append(
+					{
+						"commodity": instancied_commodity,
+						"quantity": ingredient.quantity
+					}
+						)
+#	print(self.ingredients)
+func update_stock():
+	stock += evolution_per_turn

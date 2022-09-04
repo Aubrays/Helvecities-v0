@@ -2,10 +2,11 @@
 
 [ext_resource path="res://header_bar/PeopleCounter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://chancery_theme.tres" type="Theme" id=2]
-[ext_resource path="res://header_bar/TurnCounter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/TurnCounter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/Commodities/CommodityCounter.tscn" type="PackedScene" id=7]
 
 [node name="HeaderBar" type="PanelContainer"]
+visible = false
 anchor_right = 1.0
 margin_bottom = 50.0
 size_flags_vertical = 0
@@ -39,21 +40,21 @@ margin_top = 6.0
 margin_right = 280.0
 margin_bottom = 30.0
 
-[node name="WheatCounter2" parent="HBoxContainer" instance=ExtResource( 7 )]
+[node name="WheatCounter" parent="HBoxContainer" groups=["commodity_counters"] instance=ExtResource( 7 )]
 margin_left = 305.0
 margin_top = 6.0
 margin_right = 387.0
 margin_bottom = 30.0
 commodity_name = "wheat"
 
-[node name="WoodCounter" parent="HBoxContainer" instance=ExtResource( 7 )]
+[node name="WoodCounter" parent="HBoxContainer" groups=["commodity_counters"] instance=ExtResource( 7 )]
 margin_left = 412.0
 margin_top = 6.0
 margin_right = 494.0
 margin_bottom = 30.0
 commodity_name = "wood"
 
-[node name="PorkCounter" parent="HBoxContainer" instance=ExtResource( 7 )]
+[node name="PorkCounter" parent="HBoxContainer" groups=["commodity_counters"] instance=ExtResource( 7 )]
 margin_left = 519.0
 margin_top = 6.0
 margin_right = 601.0

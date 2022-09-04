@@ -1,10 +1,16 @@
 extends HBoxContainer
 
-
+var commodity
 export var commodity_name: String
 
 
 func _ready():
-	var commodity = Global.commodities[commodity_name]
-	$CommodityIcon.set_texture(commodity.icon_texture)
-	$CommodityBox/CommodityLabel.text = String(commodity.stock)
+	for item in Global.commodities:
+		if item.commodity_name == commodity_name:
+			self.commodity = item
+	$CommodityIcon.set_texture(self.commodity.icon_texture)
+	$CommodityBox/CommodityLabel.text = String(self.commodity.stock)
+
+
+func update_text():
+	$CommodityBox/CommodityLabel.text = String(self.commodity.stock)

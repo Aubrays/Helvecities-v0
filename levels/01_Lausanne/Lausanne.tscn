@@ -1,16 +1,95 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://map/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/01_Lausanne/Lausanne.gd" type="Script" id=3]
+[ext_resource path="res://assets/1854_plan_Weber.jpg" type="Texture" id=4]
 
 [node name="Lausanne" type="Node2D"]
 script = ExtResource( 3 )
-start_wheat = 200
-start_wood = 70
-start_pork = 40
-start_people = 2000
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
 
+[node name="Palud" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/Palud"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 571, 455, 642, 473, 682, 489, 719, 489, 739, 486, 749, 500, 737, 519, 737, 540, 750, 555, 778, 568, 811, 578, 831, 574, 841, 590, 860, 608, 857, 617, 814, 622, 816, 629, 803, 634, 778, 658, 756, 679, 735, 708, 655, 723, 643, 716, 624, 697, 613, 682, 597, 671, 559, 666, 542, 655, 532, 645, 532, 615, 551, 579, 560, 543, 549, 488 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/Palud"]
+polygon = PoolVector2Array( 571, 455, 642, 473, 682, 489, 719, 489, 739, 486, 749, 500, 737, 519, 737, 540, 750, 555, 778, 568, 811, 578, 831, 574, 841, 590, 860, 608, 857, 617, 814, 622, 816, 629, 803, 634, 778, 658, 756, 679, 735, 708, 655, 723, 643, 716, 624, 697, 613, 682, 597, 671, 559, 666, 542, 655, 532, 645, 532, 615, 551, 579, 560, 543, 549, 488 )
+
+[node name="Bourg" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/Bourg"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 790, 798, 856, 801, 895, 812, 960, 824, 1005, 819, 1032, 826, 1077, 835, 1080, 789, 1081, 741, 1121, 746, 1173, 756, 1202, 809, 1209, 880, 1209, 913, 1207, 941, 1178, 968, 1071, 981, 897, 973, 813, 958, 789, 908, 762, 857, 706, 858, 626, 886, 614, 852, 647, 811 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/Bourg"]
+polygon = PoolVector2Array( 790, 798, 856, 801, 895, 812, 960, 824, 1005, 819, 1032, 826, 1077, 835, 1080, 789, 1081, 741, 1121, 746, 1173, 756, 1202, 809, 1209, 880, 1209, 913, 1207, 941, 1178, 968, 1071, 981, 897, 973, 813, 958, 789, 908, 762, 857, 706, 858, 626, 886, 614, 852, 647, 811 )
+
+[node name="StLaurent" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/StLaurent"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 243, 537, 295, 508, 345, 462, 413, 441, 439, 443, 494, 456, 521, 475, 539, 489, 551, 497, 560, 542, 554, 578, 532, 615, 532, 645, 559, 666, 597, 671, 614, 682, 643, 716, 668, 728, 671, 755, 672, 810, 648, 812, 614, 853, 574, 843, 540, 840, 507, 805, 362, 763, 311, 710, 216, 635 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/StLaurent"]
+polygon = PoolVector2Array( 243, 537, 295, 508, 345, 462, 413, 441, 439, 443, 494, 456, 521, 475, 539, 489, 551, 497, 560, 542, 554, 578, 532, 615, 532, 645, 559, 666, 597, 671, 614, 682, 643, 716, 668, 728, 671, 755, 672, 810, 648, 812, 614, 853, 574, 843, 540, 840, 507, 805, 362, 763, 311, 710, 216, 635 )
+
+[node name="Pont" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/Pont"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 1010, 661, 974, 652, 964, 662, 938, 658, 901, 645, 877, 638, 863, 628, 854, 616, 816, 622, 802, 633, 749, 686, 735, 707, 654, 722, 671, 809, 789, 798, 856, 801, 898, 813, 955, 825, 1007, 820, 1062, 836, 1079, 836, 1082, 744 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/Pont"]
+polygon = PoolVector2Array( 1010, 661, 974, 652, 964, 662, 938, 658, 901, 645, 877, 638, 863, 628, 854, 616, 816, 622, 802, 633, 749, 686, 735, 707, 654, 722, 671, 809, 789, 798, 856, 801, 898, 813, 955, 825, 1007, 820, 1062, 836, 1079, 836, 1082, 744 )
+
+[node name="Chene" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/Chene"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 565, 842, 459, 856, 427, 866, 421, 901, 427, 955, 497, 990, 536, 1023, 567, 1023, 565, 979, 578, 938, 585, 892, 626, 885, 621, 869, 615, 853, 589, 846, 573, 842 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/Chene"]
+polygon = PoolVector2Array( 565, 842, 459, 856, 427, 866, 421, 901, 427, 955, 497, 990, 536, 1023, 567, 1023, 565, 979, 578, 938, 585, 892, 626, 885, 621, 869, 615, 853, 589, 846, 573, 842 )
+
+[node name="Marterey" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/Marterey"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 1396, 920, 1245, 918, 1208, 911, 1207, 880, 1201, 809, 1210, 648, 1245, 550, 1360, 477, 1404, 480, 1421, 509, 1382, 577, 1340, 606, 1294, 671, 1260, 705, 1253, 768, 1249, 837, 1350, 837, 1395, 847 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/Marterey"]
+polygon = PoolVector2Array( 1396, 920, 1245, 918, 1208, 911, 1207, 880, 1201, 809, 1210, 648, 1245, 550, 1360, 477, 1404, 480, 1421, 509, 1382, 577, 1340, 606, 1294, 671, 1260, 705, 1253, 768, 1249, 837, 1350, 837, 1395, 847 )
+
+[node name="StFrancois" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/StFrancois"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 566, 1003, 813, 1010, 814, 958, 763, 856, 741, 857, 706, 858, 584, 891, 564, 981 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/StFrancois"]
+polygon = PoolVector2Array( 566, 1003, 813, 1010, 814, 958, 763, 856, 741, 857, 706, 858, 584, 891, 564, 981 )
+
+[node name="Ale" type="Area2D" parent="Map"]
+
+[node name="PolygonColor" type="Polygon2D" parent="Map/Ale"]
+color = Color( 0, 0, 0, 0.827451 )
+polygon = PoolVector2Array( 37, 446, 289, 487, 302, 505, 245, 539, 232, 602, 21, 565 )
+
+[node name="PolygonCollision" type="CollisionPolygon2D" parent="Map/Ale"]
+polygon = PoolVector2Array( 37, 446, 289, 487, 302, 505, 245, 539, 232, 602, 21, 565 )
+
+[node name="Node2D" type="Sprite" parent="."]
+visible = false
+position = Vector2( 789, 439 )
+scale = Vector2( 0.323303, 0.323303 )
+texture = ExtResource( 4 )
+
 [node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[connection signal="input_event" from="Map/Palud" to="." method="_on_Palud_input_event"]
+[connection signal="mouse_entered" from="Map/Palud" to="." method="_on_Palud_mouse_entered"]
+[connection signal="mouse_exited" from="Map/Palud" to="." method="_on_Palud_mouse_exited"]

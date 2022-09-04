@@ -1,5 +1,6 @@
 extends CanvasLayer
 
 
-func _ready():
-	$NextTurnButton.connect("turn_ended", $HeaderBar/HBoxContainer/TurnCounter, "update_turn_counter")
+#func _ready():
+#	print(Global.level_scene)
+#	$NextTurnButton.connect("turn_ended", Global.level_scene, "handle_turn_ended")

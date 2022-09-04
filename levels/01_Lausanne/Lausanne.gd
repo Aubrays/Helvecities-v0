@@ -1,93 +1,220 @@
 extends Node2D
 
-
 const Commodity = preload("res://ui/Commodities/Commodity.gd")
+const CostPanel = preload("res://ui/Districts/CostPanel.tscn")
+const Worker = preload("res://ui/Workers/Worker.gd")
+const StepsFunc = preload("res://levels/01_Lausanne/Steps.gd")
+
+var districts = [
+	{
+		"name": "La Palud",
+		"build_step": 1,
+		"cost": {
+			"wheat": 5000,
+		},
+	},
+]
+
+var available_commodities = [
+	{
+		"name": "wheat",
+		"start_quantity": 5000,
+	},
+	{
+		"name": "wood",
+		"start_quantity": 0,
+	},
+	{
+		"name": "pork",
+		"start_quantity": 0,
+	},
+	{
+		"name": "salt",
+		"start_quantity": 0,
+	},
+	{
+		"name": "leather",
+		"start_quantity": 0,
+	},
+	{
+		"name": "skin",
+		"start_quantity": 0,
+	},
+	{
+		"name": "bark",
+		"start_quantity": 0,
+	},
+	{
+		"name": "raw_meat_pastry",
+		"start_quantity": 0,
+	},
+	{
+		"name": "meat_pastry",
+		"start_quantity": 0,
+	},
+	{
+		"name": "dough",
+		"start_quantity": 0,
+	},
+	{
+		"name": "meat",
+		"start_quantity": 0,
+	},
+	{
+		"name": "bread",
+		"start_quantity": 0,
+	},
+	{
+		"name": "flour",
+		"start_quantity": 0,
+	},
+	{
+		"name": "shoes",
+		"start_quantity": 0,
+	},
+	{
+		"name": "wood_log",
+		"start_quantity": 0,
+	},
+	{
+		"name": "plank",
+		"start_quantity": 0,
+	},
+]
+
+var available_workers = [
+	{
+		"name": "builder",
+	},
+	{
+		"name": "farmer",
+	},
+	{
+		"name": "baker",
+	},
+	{
+		"name": "confectioner",
+	},
+	{
+		"name": "butcher",
+	},
+	{
+		"name": "woodcutter",
+	},
+	{
+		"name": "carpenter",
+	},
+	{
+		"name": "fournier",
+	},
+	{
+		"name": "miller",
+	},
+	{
+		"name": "cobbler",
+	},
+	{
+		"name": "tanner",
+	},
+	{
+		"name": "merchant",
+	},
+]
+
+var cost_panels: Dictionary
+
+### Inhabitants upkeep
+# 1 turn = 1 year of 100 inhabitants
+export var inhabitant_upkeep = {
+	"bread": 10, 
+	"meat": 3,
+	"shoes": 1,
+	"meat_pastry": 1,
+	"wood_log": 10,
+	"salt": 2,
+}
 
 export var start_wheat: int
 export var start_wood: int
 export var start_pork: int
 export var start_people: int
 
-var commodities: Dictionary
-
 onready var hud: CanvasLayer = $HUD
+onready var turn_counter: HBoxContainer = $HUD/SidePanel/VBoxContainer/ActionContainer/TurnCounter
+onready var currentTurn = Global.turn_number
+onready var inhabitants_number = Global.inhabitants_number
 
-### Resources
-# People
-var currentPeople: int = start_people
-var peoplePerTurn: int = 0
-
-# Salt
-var currentSalt: int = 0
-var saltPerTurn: int = 0
-
-# Leather
-var currentLeather: int = 0
-var leatherPerTurn: int = 0
-
-# Skin
-var currentSkin: int = 0
-var skinPerTurn: int = 0
-
-# Bark
-var currentBark: int = 0
-var barkPerTurn: int = 0
-
-# Meat pastry
-var currentMeatPastry: int = 0
-var meatPastryPerTurn: int = 0
-
-# Dough
-var currentDough: int = 0
-var doughPerTurn: int = 0
-
-# Meat
-var currentMeat: int = 0
-var meatPerTurn: int = 0
-
-# Bread
-var currentBread: int = 0
-var breadPerTurn: int = 0
-
-# Flour
-var currentFlour: int = 0
-var flourPerTurn: int = 0
-
-# Shoes
-var currentShoes: int = 0
-var shoesPerTurn: int = 0
-
-# Wood log
-var currentWoodLog: int = 0
-var woodLogPerTurn: int = 0
-
-# Plank
-var currentPlank: int = 0
-var plankPerTurn: int = 0
-
-### Inhabitants upkeep
-
-# TODO
-
-var currentTurn: int = 1
 
 
 func _ready():
-	print(commodities.wheat.stock)
-
+	Events.connect("turn_ended", self, "_on_Events_turn_ended")
+	var steps = StepsFunc.get_steps()
+	
+	for district in Global.districts:
+		var cost_panel = CostPanel.instance()
+		cost_panel.set("district", district)
+		self.add_child(cost_panel)
+		
+		cost_panels[district.name] = cost_panel
+#		
+#	TODO Instance costPanel in the Area2D!
+		
+#		print(cost_panel)
 
 func _enter_tree():
-	var wheat = Commodity.new("wheat", preload("res://assets/ressources_icons/oat.svg"), start_wheat, 10)
-	var wood = Commodity.new("wood", preload("res://assets/ressources_icons/wood-pile.svg"), start_wood, 10)
-	var pork = Commodity.new("pork", preload("res://assets/ressources_icons/pig.svg"), start_pork, 10)
+	for commodity in available_commodities:
+		Global.commodities.append(
+			Commodity.new(String(commodity.name), commodity.start_quantity)
+		)
+		
+	for commodity in Global.commodities:
+		commodity.add_ingredients()
+		
+	for worker in available_workers:
+		Global.workers.append(
+			Worker.new(worker.name)
+		)
+		
+	Global.districts = districts
 
-	commodities = {
-		"wheat": wheat,
-		"wood": wood,
-		"pork": pork,
-		}
-	Global.commodities = commodities
+
+func _on_Events_turn_ended():
+	Global.turn_number += 1
+	turn_counter.update_turn_counter(Global.turn_number)
+	
+	for worker in Global.workers:
+		worker.update_quantity_at_end_turn()
+		worker.produce()
+	
+	for commodity in Global.commodities:
+		commodity.update_stock()
+		
+	for i in inhabitant_upkeep:
+		for commodity in Global.commodities:
+			if commodity.commodity_name == i:
+				commodity.stock -= inhabitant_upkeep[i] * Global.inhabitants_number
+			if commodity.stock < 0:
+	#			emit_signal("commodity_out_of_stock", commodity)
+				commodity.stock = 0
+			
+	get_tree().call_group("commodity_counters", "update_text")
 
 
-func add_to_resource_per_turn(resource, amount):
+func _on_Palud_mouse_entered():
+	show_cost_panel("La Palud")
+
+
+func _on_Palud_input_event(viewport, event, shape_idx):
 	pass
+
+
+func show_cost_panel(district_name):
+	cost_panels[district_name].show()
+
+
+func hide_cost_panel(district_name):
+	cost_panels[district_name].hide()
+
+
+func _on_Palud_mouse_exited():
+	hide_cost_panel("La Palud")

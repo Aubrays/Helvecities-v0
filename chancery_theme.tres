@@ -3,9 +3,11 @@
 [ext_resource path="res://assets/black_chancery/BLKCHCRY.TTF" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
+size = 24
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 32
 
 [resource]
 default_font = SubResource( 2 )

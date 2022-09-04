@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Commodity",
 "language": "GDScript",
 "path": "res://ui/Commodities/Commodity.gd"
+}, {
+"base": "Node",
+"class": "Worker",
+"language": "GDScript",
+"path": "res://ui/Workers/Worker.gd"
 } ]
 _global_script_class_icons={
-"Commodity": ""
+"Commodity": "",
+"Worker": ""
 }
 
 [application]
@@ -27,19 +33,26 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
+Events="*res://Events.gd"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/test_width=1440
-window/size/test_height=900
-window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gdnative]
 
 singletons=[  ]
+
+[global]
+
+short=false
+
+[gui]
+
+theme/custom_font="res://assets/grenze/grenze_font_regular.tres"
 
 [physics]
 
