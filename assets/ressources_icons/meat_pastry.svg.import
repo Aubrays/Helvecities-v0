@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wood-pile.svg-58525507c3795840a2eb09b8916dc581.stex"
+path="res://.import/meat_pastry.svg-ee7f404d1a9e6448118fb3192eff2022.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ressources_icons/wood-pile.svg"
-dest_files=[ "res://.import/wood-pile.svg-58525507c3795840a2eb09b8916dc581.stex" ]
+source_file="res://assets/ressources_icons/meat_pastry.svg"
+dest_files=[ "res://.import/meat_pastry.svg-ee7f404d1a9e6448118fb3192eff2022.stex" ]
 
 [params]
 

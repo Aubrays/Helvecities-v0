@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gloves.png-717093fd231caa39e682392fb97212bf.stex"
+path="res://.import/raw_meat_pastry.svg-dfb26855c00c60eff905d5f74ed4a29d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ressources_icons/gloves.png"
-dest_files=[ "res://.import/gloves.png-717093fd231caa39e682392fb97212bf.stex" ]
+source_file="res://assets/ressources_icons/raw_meat_pastry.svg"
+dest_files=[ "res://.import/raw_meat_pastry.svg-dfb26855c00c60eff905d5f74ed4a29d.stex" ]
 
 [params]
 

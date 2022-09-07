@@ -198,6 +198,7 @@ func _on_Events_turn_ended():
 				commodity.stock = 0
 			
 	get_tree().call_group("commodity_counters", "update_text")
+	get_node("HUD/CommoditiesWindow").update_text()
 
 
 func _on_Palud_mouse_entered():

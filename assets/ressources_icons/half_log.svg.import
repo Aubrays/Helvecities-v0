@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wood-pile.png-15c1c48bad6902c981c52554587dcab8.stex"
+path="res://.import/half_log.svg-1da832d2af2f46b97d68247de5202cce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ressources_icons/wood-pile.png"
-dest_files=[ "res://.import/wood-pile.png-15c1c48bad6902c981c52554587dcab8.stex" ]
+source_file="res://assets/ressources_icons/half_log.svg"
+dest_files=[ "res://.import/half_log.svg-1da832d2af2f46b97d68247de5202cce.stex" ]
 
 [params]
 

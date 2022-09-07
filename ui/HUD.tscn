@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://ui/Commodities/CommoditiesWindow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/NextTurnButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/SidePanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/HUD.gd" type="Script" id=4]
@@ -29,3 +30,5 @@ margin_top = 176.0
 margin_right = 1184.0
 margin_bottom = 792.0
 resizable = true
+
+[node name="CommoditiesWindow" parent="." instance=ExtResource( 1 )]

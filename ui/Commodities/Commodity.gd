@@ -20,6 +20,7 @@ func _init(commodity_name, initial_stock, initial_evolution_per_turn = 0):
 	self.icon_texture = load(commodity.icon)
 	self.stock = initial_stock
 	self.evolution_per_turn = initial_evolution_per_turn
+	
 
 func add_ingredients():
 	var commodity: Dictionary

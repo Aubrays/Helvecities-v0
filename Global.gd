@@ -10,7 +10,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "wood",
-		"icon": "res://assets/ressources_icons/wood-pile.svg",
+		"icon": "res://assets/ressources_icons/wood_pile.svg",
 		"tradable": true,
 		"ingredients" : [],
 	},
@@ -22,13 +22,13 @@ const existing_commodities = [
 	},
 	{
 		"name": "salt",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/salt.svg",
 		"tradable": true,
 		"ingredients" : [],
 	},
 	{
 		"name": "leather",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/leather.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -43,7 +43,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "skin",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/skin.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -54,7 +54,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "bark",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/bark.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -65,7 +65,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "raw_meat_pastry",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/raw_meat_pastry.svg",
 		"tradable": false,
 		"ingredients" : [
 			{
@@ -80,7 +80,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "meat_pastry",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/meat_pastry.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -95,7 +95,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "dough",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/dough.svg",
 		"tradable": false,
 		"ingredients" : [
 			{
@@ -106,7 +106,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "meat",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/steak.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -117,7 +117,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "bread",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/bread.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -132,7 +132,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "flour",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/flour.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -143,7 +143,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "shoes",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/leather_boot.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -154,7 +154,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "wood_log",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/half_log.svg",
 		"tradable": true,
 		"ingredients" : [
 			{
@@ -165,7 +165,7 @@ const existing_commodities = [
 	},
 	{
 		"name": "plank",
-		"icon": "res://assets/ressources_icons/cube.svg",
+		"icon": "res://assets/ressources_icons/wood_beam.svg",
 		"tradable": true,
 		"ingredients" : [
 			{

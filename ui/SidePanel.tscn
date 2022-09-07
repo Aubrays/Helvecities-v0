@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/NextTurnButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/TurnCounter.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/buildings_illustrations/watermill.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/ui_icons/workers.svg" type="Texture" id=6]
 [ext_resource path="res://ui/WorkersButton.gd" type="Script" id=7]
+[ext_resource path="res://ui/CommoditiesButton.gd" type="Script" id=8]
+[ext_resource path="res://assets/ressources_icons/cube.svg" type="Texture" id=9]
 
 [node name="SidePanel" type="PanelContainer"]
 anchor_right = 1.0
@@ -45,7 +47,7 @@ text = "Xe"
 [node name="GeneralInfo" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 41.0
 margin_right = 466.0
-margin_bottom = 968.0
+margin_bottom = 914.0
 size_flags_vertical = 3
 
 [node name="Label3" type="Label" parent="VBoxContainer/GeneralInfo"]
@@ -108,9 +110,9 @@ margin_bottom = 632.0
 text = "Available in a next version..."
 
 [node name="CommoditiesInfo" type="GridContainer" parent="VBoxContainer"]
-margin_top = 972.0
+margin_top = 918.0
 margin_right = 466.0
-margin_bottom = 1012.0
+margin_bottom = 958.0
 columns = 4
 
 [node name="PeopleLabel" parent="VBoxContainer/CommoditiesInfo" instance=ExtResource( 4 )]
@@ -135,22 +137,36 @@ margin_right = 442.0
 margin_bottom = 40.0
 commodity_name = "pork"
 
-[node name="ActionContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 1016.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 962.0
 margin_right = 466.0
-margin_bottom = 1066.0
-custom_constants/separation = 25
-alignment = 2
+margin_bottom = 1012.0
 
-[node name="WorkersButton" type="Button" parent="VBoxContainer/ActionContainer"]
-margin_left = 16.0
-margin_right = 166.0
+[node name="WorkersButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 150.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 150, 50 )
 text = "Workers"
 icon = ExtResource( 6 )
 expand_icon = true
 script = ExtResource( 7 )
+
+[node name="CommoditiesButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 50 )
+text = "Commodities"
+icon = ExtResource( 9 )
+expand_icon = true
+script = ExtResource( 8 )
+
+[node name="ActionContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 1016.0
+margin_right = 466.0
+margin_bottom = 1066.0
+custom_constants/separation = 25
+alignment = 2
 
 [node name="TurnCounter" parent="VBoxContainer/ActionContainer" instance=ExtResource( 2 )]
 margin_left = 191.0
@@ -164,4 +180,5 @@ margin_left = 316.0
 margin_right = 466.0
 rect_min_size = Vector2( 150, 50 )
 
-[connection signal="pressed" from="VBoxContainer/ActionContainer/WorkersButton" to="VBoxContainer/ActionContainer/WorkersButton" method="_on_WorkersButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/WorkersButton" to="VBoxContainer/HBoxContainer/WorkersButton" method="_on_WorkersButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CommoditiesButton" to="VBoxContainer/HBoxContainer/CommoditiesButton" method="_on_CommoditiesButton_pressed"]
