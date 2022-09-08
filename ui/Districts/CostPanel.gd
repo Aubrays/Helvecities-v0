@@ -17,5 +17,5 @@ func _ready():
 		box.add_child(cost_line)
 		for item in Global.existing_commodities:
 			if item.name == cost:
-				print(item.icon)
+				cost_line.get_node("Label").text = String(district.cost[cost])
 				cost_line.get_node("TextureRect").set_texture(load(item.icon))

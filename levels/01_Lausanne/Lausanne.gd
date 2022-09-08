@@ -13,6 +13,14 @@ var districts = [
 			"wheat": 5000,
 		},
 	},
+	{
+		"name": "Le Bourg",
+		"build_step": 2,
+		"cost": {
+			"wheat": 15000,
+			"plank": 4000,
+		},
+	},
 ]
 
 var available_commodities = [
@@ -201,21 +209,75 @@ func _on_Events_turn_ended():
 	get_node("HUD/CommoditiesWindow").update_text()
 
 
-func _on_Palud_mouse_entered():
-	show_cost_panel("La Palud")
-
-
 func _on_Palud_input_event(viewport, event, shape_idx):
-	pass
+	if event is InputEventMouseMotion:
+		show_cost_panel("La Palud", event.position)
+		
+	if event is InputEventMouseButton:
+		show_build_panel("La Palud")
+
+func _on_Palud_mouse_exited():
+	hide_cost_panel("La Palud")
 
 
-func show_cost_panel(district_name):
-	cost_panels[district_name].show()
+func _on_Bourg_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseMotion:
+		show_cost_panel("Le Bourg", event.position)
+		
+	if event is InputEventMouseButton:
+		show_build_panel("Le Bourg")
+
+
+func _on_Bourg_mouse_exited():
+	hide_cost_panel("Le Bourg")
+
+
+func show_cost_panel(district_name, position):
+	var district_panel = cost_panels[district_name]
+	var offset := 10
+	district_panel.rect_position.x = position[0] + offset
+	district_panel.rect_position.y = position[1] + offset
+	
+	var district_node : Area2D
+	match district_name:
+		"La Palud":
+			district_node = get_node("Map/Palud")
+		"Le Bourg":
+			district_node = get_node("Map/Bourg")
+		"Saint-Laurent":
+			district_node = get_node("Map/StLaurent")
+		"Le Pont":
+			district_node = get_node("Map/Pont")
+	# TODO Manage the others nodes...
+	
+	district_node.get_node("PolygonColor").color = Color( 0.827451, 0.827451, 0.827451, 0.82421875 )
+	
+	district_panel.show()
 
 
 func hide_cost_panel(district_name):
 	cost_panels[district_name].hide()
+	
+	var district_node : Area2D
+	match district_name:
+		"La Palud":
+			district_node = get_node("Map/Palud")
+		"Le Bourg":
+			district_node = get_node("Map/Bourg")
+		"Saint-Laurent":
+			district_node = get_node("Map/StLaurent")
+		"Le Pont":
+			district_node = get_node("Map/Pont")
+	# TODO Manage the others nodes...
+	
+	district_node.get_node("PolygonColor").color = Color( 0, 0, 0, 0.82421875 )
 
 
-func _on_Palud_mouse_exited():
-	hide_cost_panel("La Palud")
+func show_build_panel(district_name):
+	pass
+
+
+
+
+
+
