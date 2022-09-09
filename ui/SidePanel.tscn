@@ -32,7 +32,13 @@ text = "Menu"
 margin_right = 466.0
 margin_bottom = 37.0
 
+[node name="StepNumber" type="Label" parent="VBoxContainer/StepInfo"]
+margin_right = 60.0
+margin_bottom = 37.0
+text = "Chap. I"
+
 [node name="Label" type="Label" parent="VBoxContainer/StepInfo"]
+margin_left = 64.0
 margin_right = 439.0
 margin_bottom = 37.0
 size_flags_horizontal = 3

@@ -3,6 +3,7 @@ extends Node
 
 
 signal commodities_button_pressed
+signal district_build_confirmed(district_name)
 signal turn_ended
 signal workers_button_pressed
 signal worker_number_changed(target, new_text)

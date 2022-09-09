@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://helvecities-v0-theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/Districts/DistrictWindow.gd" type="Script" id=3]
+
+[node name="DistrictWindow" type="ConfirmationDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -134.0
+margin_top = -52.0
+margin_right = 134.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+window_title = "Veuillez confirmer…"
+resizable = true
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 341.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Message" type="Label" parent="VBoxContainer"]
+margin_right = 333.0
+margin_bottom = 37.0
+text = "Would you build the following district?"
+
+[node name="DistrictName" type="Label" parent="VBoxContainer"]
+margin_top = 41.0
+margin_right = 333.0
+margin_bottom = 78.0
+text = "Disctrict Name"
+
+[connection signal="confirmed" from="." to="." method="_on_DistrictWindow_confirmed"]

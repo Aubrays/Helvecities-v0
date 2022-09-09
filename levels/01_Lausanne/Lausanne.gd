@@ -4,6 +4,7 @@ const Commodity = preload("res://ui/Commodities/Commodity.gd")
 const CostPanel = preload("res://ui/Districts/CostPanel.tscn")
 const Worker = preload("res://ui/Workers/Worker.gd")
 const StepsFunc = preload("res://levels/01_Lausanne/Steps.gd")
+const DistrictWindow = preload("res://ui/Districts/DistrictWindow.tscn")
 
 var districts = [
 	{
@@ -156,18 +157,9 @@ onready var inhabitants_number = Global.inhabitants_number
 
 func _ready():
 	Events.connect("turn_ended", self, "_on_Events_turn_ended")
+	Events.connect("district_build_confirmed", self, "_on_Events_district_build_confirmed")
 	var steps = StepsFunc.get_steps()
-	
-	for district in Global.districts:
-		var cost_panel = CostPanel.instance()
-		cost_panel.set("district", district)
-		self.add_child(cost_panel)
-		
-		cost_panels[district.name] = cost_panel
-#		
-#	TODO Instance costPanel in the Area2D!
-		
-#		print(cost_panel)
+
 
 func _enter_tree():
 	for commodity in available_commodities:
@@ -182,8 +174,9 @@ func _enter_tree():
 		Global.workers.append(
 			Worker.new(worker.name)
 		)
-		
-	Global.districts = districts
+	for district in districts:
+		district["build"] = false
+		Global.districts.append(district)
 
 
 func _on_Events_turn_ended():
@@ -207,13 +200,31 @@ func _on_Events_turn_ended():
 			
 	get_tree().call_group("commodity_counters", "update_text")
 	get_node("HUD/CommoditiesWindow").update_text()
+	
+func _on_Events_district_build_confirmed(district_name):
+	var district_node: Area2D
+	match district_name:
+		"La Palud":
+			district_node = get_node("Map/Palud")
+		"Le Bourg":
+			district_node = get_node("Map/Bourg")
+		"Saint-Laurent":
+			district_node = get_node("Map/StLaurent")
+		"Le Pont":
+			district_node = get_node("Map/Pont")
+	
+	district_node.get_node("PolygonColor").color = Color( 0, 0, 0, 0)
+	
+	get_tree().call_group("commodity_counters", "update_text")
+	get_node("HUD/CommoditiesWindow").update_text()
 
 
 func _on_Palud_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseMotion:
+		hide_cost_panel("La Palud")
 		show_cost_panel("La Palud", event.position)
 		
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		show_build_panel("La Palud")
 
 func _on_Palud_mouse_exited():
@@ -222,9 +233,10 @@ func _on_Palud_mouse_exited():
 
 func _on_Bourg_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseMotion:
+		hide_cost_panel("Le Bourg")
 		show_cost_panel("Le Bourg", event.position)
 		
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		show_build_panel("Le Bourg")
 
 
@@ -233,7 +245,12 @@ func _on_Bourg_mouse_exited():
 
 
 func show_cost_panel(district_name, position):
-	var district_panel = cost_panels[district_name]
+	var district_panel = CostPanel.instance()
+	
+	for district in Global.districts:
+		if district_name == district.name:
+			district_panel.set("district", district)
+
 	var offset := 10
 	district_panel.rect_position.x = position[0] + offset
 	district_panel.rect_position.y = position[1] + offset
@@ -252,11 +269,11 @@ func show_cost_panel(district_name, position):
 	
 	district_node.get_node("PolygonColor").color = Color( 0.827451, 0.827451, 0.827451, 0.82421875 )
 	
+	self.add_child(district_panel)
 	district_panel.show()
 
 
 func hide_cost_panel(district_name):
-	cost_panels[district_name].hide()
 	
 	var district_node : Area2D
 	match district_name:
@@ -270,11 +287,24 @@ func hide_cost_panel(district_name):
 			district_node = get_node("Map/Pont")
 	# TODO Manage the others nodes...
 	
-	district_node.get_node("PolygonColor").color = Color( 0, 0, 0, 0.82421875 )
+	for district in Global.districts:
+		if district_name == district.name:
+			if district.build == false:
+				district_node.get_node("PolygonColor").color = Color( 0, 0, 0, 0.82421875 )
+			if district.build == true:
+				district_node.get_node("PolygonColor").color = Color( 0, 0, 0, 0 )
+	self.remove_child(get_node("CostPanel"))
 
 
 func show_build_panel(district_name):
-	pass
+	for district in Global.districts:
+		if district_name == district.name and district.build == false and district.build_step == Global.step:
+			var district_window = DistrictWindow.instance()
+			district_window.init(district_name)
+			hud.add_child(district_window)
+			district_window.show()
+	
+
 
 
 

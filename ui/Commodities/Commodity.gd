@@ -37,6 +37,7 @@ func add_ingredients():
 						"quantity": ingredient.quantity
 					}
 						)
-#	print(self.ingredients)
+
+
 func update_stock():
 	stock += evolution_per_turn

@@ -251,7 +251,7 @@ var existing_workers = [
 	},
 ] 
 onready var commodities: Array
-onready var districts
+onready var districts: Array
 onready var workers: Array
 onready var turn_number: int = 1
 onready var inhabitants_number: int = 500

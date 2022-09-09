@@ -70,7 +70,6 @@ func calc_workers_sum():
 
 
 func cancelled():
-	print("closed")
 	for child in grid.get_children():
 		child.get_node("LineEdit").clear()
 
